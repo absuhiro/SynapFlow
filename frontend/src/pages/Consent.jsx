@@ -1,4 +1,5 @@
 function Consent({ form, onConfirm, onBack }) {
+  console.log("hello")
   return (
     <div className="page-section">
 
