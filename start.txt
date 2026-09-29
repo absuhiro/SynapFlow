@@ -1,0 +1,4 @@
+harveersingh@Harveers-MacBook-Air SynapFlow_Core_MVP % source .venv/bin/activate
+(.venv) harveersingh@Harveers-MacBook-Air Backend % uvicorn main:app --reload
+
+harveersingh@Harveers-MacBook-Air frontend % npm run dev
