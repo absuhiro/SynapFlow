@@ -1,5 +1,17 @@
+import { useState } from "react";
+
 function Consent({ form, onConfirm, onBack }) {
-  console.log("hello")
+  const [consent, setConsent] = useState(false);
+
+  const handleContinue = () => {
+    if (!consent) {
+      alert("Please provide consent to continue.");
+      return;
+    }
+
+    onConfirm();
+  };
+
   return (
     <div className="page-section">
 
@@ -52,18 +64,25 @@ function Consent({ form, onConfirm, onBack }) {
         </div>
 
         <div className="consent-box">
-          <input type="checkbox" id="consent" />
 
-          <label htmlFor="consent">
+          <input
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+          />
+
+          <span>
             I authorize SynapFlow to share the required information
             with the relevant government department for processing
             this service request.
-          </label>
+          </span>
+
         </div>
 
         <div className="hero-actions">
 
           <button
+            type="button"
             className="secondary-btn"
             onClick={onBack}
           >
@@ -71,18 +90,9 @@ function Consent({ form, onConfirm, onBack }) {
           </button>
 
           <button
+            type="button"
             className="primary-btn"
-            onClick={() => {
-              const checkbox =
-                document.getElementById("consent");
-
-              if (!checkbox.checked) {
-                alert("Please provide consent to continue.");
-                return;
-              }
-
-              onConfirm();
-            }}
+            onClick={handleContinue}
           >
             Give Consent & Continue →
           </button>
